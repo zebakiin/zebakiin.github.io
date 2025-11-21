@@ -1,0 +1,34 @@
+---
+layout: default
+title: Home
+---
+
+<div style="padding: 0;">
+    <div class="hero">
+        <h1>Lino Rufaro</h1>
+        <div style="position: relative;">
+            <button class="contact-btn" onclick="toggleContact()">Contact</button>
+            <div class="contact-dropdown" id="contactDropdown">
+                <a href="https://linktr.ee/yourprofile" target="_blank">Linktree</a>
+                <a href="mailto:your.email@example.com">your.email@example.com</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="sections-grid">
+        <a href="{{ '/about.html' | relative_url }}" class="section-card">
+            <h2>About Me</h2>
+        </a>
+        <a href="{{ '/zweisamkeit.html' | relative_url }}" class="section-card">
+            <h2>Zweisamkeit</h2>
+        </a>
+        <a href="{{ '/blog.html' | relative_url }}" class="section-card">
+            <h2>Blog</h2>
+        </a>
+        <a href="{{ '/services.html' | relative_url }}" class="section-card">
+            <h2>Services</h2>
+        </a>
+    </div>
+</div>
+
+<script src="{{ '/assets/js/script.js' | relative_url }}"></script>

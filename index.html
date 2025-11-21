@@ -13,7 +13,7 @@
             <button class="contact-btn" onclick="toggleContact()">Contact</button>
             <div class="contact-dropdown" id="contactDropdown">
                 <a href="https://linktr.ee/linorufaro" target="_blank">Linktree</a>
-                <a href="contact@linorufaro.com">contact@linorufaro.com</a>
+                <a href="#" onclick="copyEmail(event)">contact@linorufaro.com</a>
             </div>
         </div>
     </div>
@@ -25,10 +25,17 @@
         <a href="zweisamkeit.html" class="section-card">
             <h2>Zweisamkeit</h2>
         </a>
-    
+        <a href="blog.html" class="section-card">
+            <h2>Blog</h2>
+        </a>
         <a href="services.html" class="section-card">
             <h2>Services</h2>
         </a>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="copyNotification" class="copy-notification">
+        Copied to clipboard!
     </div>
 
     <script src="assets/js/script.js"></script>

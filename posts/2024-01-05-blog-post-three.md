@@ -1,9 +1,20 @@
 ---
 layout: post
-title: "Blog Post Title Three"
-date: 2024-01-05
+title: "Blog Post Title One"
+date: 2024-01-15
+image: /assets/images/blog1.jpg
 ---
 
-This post has no image specified, so it will show the placeholder.
+This is your first blog post content. Write your content here in **Markdown** format.
 
-More great content coming your way. This section is perfect for sharing your expertise.
+## Subheading
+
+You can use Markdown formatting:
+- Bullet points
+- **Bold text**
+- *Italic text*
+- [Links](https://example.com)
+
+### Another Section
+
+Add as much content as you want. Jekyll will automatically format it and add it to your blog page.

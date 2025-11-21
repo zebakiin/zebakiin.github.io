@@ -1,14 +1,3 @@
 title: Lino Rufaro
-description: Personal Website
-url: "https://zebakiin.github.io"
-baseurl: ""
-
-# Build settings
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
-
-# Collections
-collections:
-  posts:
-    output: true
-    permalink: /blog/:year/:month/:day/:title/

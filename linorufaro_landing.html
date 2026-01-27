@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinoRufaro - Social Media für Parkettleger in Berlin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B6F47;
+            --secondary: #A0826D;
+            --accent: #C8B08C;
+            --light: #F5F1E8;
+            --dark: #3E2F23;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .cta-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .cta-header:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 111, 71, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            padding: 100px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .problem h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .problem p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .services h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card.premium {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 50px;
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(139, 111, 71, 0.4);
+        }
+
+        .service-card.premium:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .service-card.premium h3,
+        .service-card.premium h4 {
+            color: var(--white);
+        }
+
+        .service-card.premium .guarantee {
+            background-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .package-label {
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .service-card h4 {
+            color: var(--secondary);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .service-card li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .guarantee {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* Bonuses Section */
+        .bonuses {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .bonuses h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .bonus-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bonus-item {
+            background-color: var(--light);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .bonus-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Promise Section */
+        .promise {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .promise h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .promise-box {
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .promise-box p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            flex: 0 0 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-text h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .contact h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            background-color: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            margin-bottom: 25px;
+        }
+
+        .checkbox-group label {
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+            color: var(--dark);
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .faq h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-item h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .faq-item p {
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero h2 {
+                font-size: 1.2em;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card.premium {
+                transform: scale(1);
+            }
+
+            .service-card.premium:hover {
+                transform: translateY(-10px);
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Ctext x='10' y='50' font-family='Arial' font-size='32' fill='%238B6F47' font-weight='bold'%3ELinoRufaro%3C/text%3E%3C/svg%3E" alt="LinoRufaro Logo" class="logo">
+                <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-header">Jetzt Kontakt aufnehmen</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Vom Handwerker zum digitalen Marktführer in Berlin</h1>
+            <h2>Schluss mit teuren Agenturen und Fachkräftemangel. Ich mache Ihren Betrieb sichtbar und befähige Ihr Team, Kunden und Azubis über Social Media fast von selbst zu gewinnen.</h2>
+            <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-button">Jetzt kostenloses Strategiegespräch vereinbaren</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2>Warum jetzt handeln?</h2>
+            <p>Gute Arbeit spricht für sich – aber im Netz ist Ihr Betrieb oft unsichtbar. Social Media zeigt oft ein verzerrtes Bild vom Handwerk, was zu falschen Erwartungen bei Bewerbern führt oder Premium-Kunden zur Konkurrenz treibt.</p>
+            <p><strong>Die Lösung liegt nicht in einer teuren, externen Agentur, sondern bereits in Ihrem Betrieb: in Ihren eigenen Projekten und Mitarbeitern.</strong></p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Ihre drei Erfolgssysteme</h2>
+            <div class="service-grid">
+                <!-- Service 3 - Workshop (Links) -->
+                <div class="service-card">
+                    <div class="package-label">Minimum-Paket</div>
+                    <h3>Workshop: Vom Handwerker zum Marktführer</h3>
+                    <h4>Machen Sie Ihren Azubi zum internen Marketing-Antrieb</h4>
+                    <ul>
+                        <li><strong>Hilfe zur Selbsthilfe:</strong> Ein 1-Tages-Workshop vor Ort. Ihr Team lernt, wie man nur mit dem Handy filmt, schneidet und postet</li>
+                        <li><strong>Das Resultat:</strong> Volle Kontrolle über Ihren Auftritt und dauerhafte Unabhängigkeit von teuren Agenturen</li>
+                    </ul>
+                    <div class="guarantee">
+                        ✓ Qualitäts-Garantie: Wenn Ihr Team nach meinem Workshop in der ersten Woche keine 5 Videos postet, auf die Sie stolz sind, komme ich persönlich vorbei und filme kostenlos für Sie nach
+                    </div>
+                </div>
+
+                <!-- Service 2 - Premium (Mitte, größer) -->
+                <div class="service-card premium">
+                    <h3>Das Premium-Kunden-System</h3>
+                    <h4>Für hochwertige Gewerke, die Villen-Kunden statt Billig-Reparaturen wollen</h4>
+                    <ul>
+                        <li><strong>Exklusive Positionierung:</strong> Cinematische Aufnahmen Ihrer besten Projekte und gezielte Werbeanzeigen in den wohlhabenden PLZ-Gebieten Berlins</li>
+                        <li><strong>Das Resultat:</strong> Weniger Preisdiskussionen und mehr Abschlüsse mit besseren Margen</li>
+                    </ul>
+                    <div class="guarantee">
+                        ✓ Garantie: Nur eine kleine Einrichtungsgebühr – die Hauptzahlung erfolgt erst nach dem ersten unterschriebenen Kunden
+                    </div>
+                </div>
+
+                <!-- Service 1 - Team Magnet (Rechts) -->
+                <div class="service-card">
+                    <h3>Das Team-Magnet-Paket</h3>
+                    <h4>Für Betriebe mit Fachkräfte- oder Azubi-Mangel</h4>
+                    <ul>
+                        <li><strong>Realistische Sichtbarkeit:</strong> Wir zeigen Ihren echten Arbeitsalltag mit authentischen Kurzvideos (Reels/TikToks)</li>
+                        <li><strong>Das Resultat:</strong> Mehr passende Bewerbungen mit realistischen Erwartungen und weniger Fehlbesetzungen</li>
+                    </ul>
+                    <div class="guarantee">
+                        ✓ Garantie: Sie zahlen erst, wenn sich ein qualifizierter Bewerber bei Ihnen meldet
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonuses Section -->
+    <section class="bonuses">
+        <div class="container">
+            <h2>Exklusive Boni</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">Wenn wir zusammenarbeiten, erhalten Sie zusätzlich:</p>
+            <div class="bonus-list">
+                <div class="bonus-item">
+                    <h3>3D-gedruckte Innovation</h3>
+                    <p>Ein physischer 3D-gedruckter QR-Code für Ihre Website oder Google-Maps-Profil – bleibt beim Kunden, statt im Müll zu landen.</p>
+                </div>
+                <div class="bonus-item">
+                    <h3>Premium-Archiv</h3>
+                    <p>Ein optimiertes Vorher-/Nachher-Portfolio für Ihr Tablet, um die Abschlussquote bei Vor-Ort-Terminen spürbar zu steigern.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promise Section -->
+    <section class="promise">
+        <div class="container">
+            <h2>Unser Ansatz</h2>
+            <div class="promise-box">
+                <p><strong>Marktanalyse:</strong> Jede Kampagne beginnt mit einer tiefen Recherche Ihrer Zielgruppe und Konkurrenz.</p>
+                <p><strong>KPI-Fokus:</strong> Wir messen Erfolg an harten Zahlen: Mehr Anfragen, bessere Margen und weniger Fehlbesetzungen.</p>
+                <p><strong>Algorithmus-Expertise:</strong> Wir nutzen die aktuelle Umwandlung von Social Media und moderne Algorithmen, damit Kunden Sie finden – und nicht umgekehrt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='140' fill='%23A0826D'/%3E%3Ccircle cx='150' cy='120' r='50' fill='%238B6F47'/%3E%3Cpath d='M 70 250 Q 150 200 230 250' fill='%238B6F47'/%3E%3C/svg%3E" alt="Lino Rufaro">
+                </div>
+                <div class="about-text">
+                    <h2>Über Lino Rufaro</h2>
+                    <p>Als spezialisierter Social Media Experte für das Handwerk in Berlin habe ich es mir zur Aufgabe gemacht, Parkettleger-Betriebe in die digitale Sichtbarkeit zu bringen.</p>
+                    <p>Meine Mission ist es, Ihnen zu zeigen, dass die beste Marketing-Kraft bereits in Ihrem Betrieb steckt – in Ihren Projekten und Ihrem Team.</p>
+                    <p>Keine teuren Agenturen. Keine falschen Versprechen. Nur authentische Sichtbarkeit, die Ihre echte Arbeit zeigt und die richtigen Kunden sowie Mitarbeiter anzieht.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Jetzt kostenloses Strategiegespräch vereinbaren</h2>
+            <div class="form-container" style="text-align: center;">
+                <p style="font-size: 1.2em; margin-bottom: 30px;">Bereit, Ihren Betrieb digital sichtbar zu machen?</p>
+                <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-button">Termin jetzt buchen</a>
+                <p style="margin-top: 30px; color: var(--secondary);">Oder schreiben Sie uns direkt: <strong>contact@linorufaro.com</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2>Häufig gestellte Fragen</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>Warum sollte ich nicht einfach eine normale Marketing-Agentur beauftragen?</h3>
+                    <p>Normale Agenturen kennen das Handwerk nicht. Sie produzieren generische Inhalte, die nicht die Realität Ihres Betriebs widerspiegeln. Ich bin spezialisiert auf Parkettleger und weiß genau, was Ihre Zielgruppe sehen will.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Wie schnell sehe ich Ergebnisse?</h3>
+                    <p>Bei der Premium-Kunden-Strategie sehen Sie erste Anfragen meist innerhalb von 2-4 Wochen. Beim Team-Magnet-Paket hängt es von der Qualität der Bewerbungen ab – aber Sie zahlen ja erst bei Erfolg.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Muss ich mich selbst um die Social-Media-Beiträge kümmern?</h3>
+                    <p>Das hängt vom gewählten Paket ab. Beim Workshop lernen Sie es selbst, bei den anderen beiden Paketen übernehme ich die Produktion für Sie.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Was macht Ihre Garantie so besonders?</h3>
+                    <p>Ich trage das Risiko. Sie investieren nur, wenn echte Ergebnisse da sind. Das zeigt mein Vertrauen in meine Methoden – und gibt Ihnen Sicherheit.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Funktioniert das auch außerhalb von Berlin?</h3>
+                    <p>Aktuell bin ich auf Berlin spezialisiert, da ich die lokalen Märkte und PLZ-Gebiete genau kenne. Für andere Regionen nehmen Sie gerne Kontakt auf – je nach Anfrage kann ich das Angebot erweitern.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LinoRufaro</h3>
+                    <p>Social Media für Parkettleger</p>
+                    <p>Berlin · Seit 2026</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p>E-Mail: contact@linorufaro.com</p>
+                    <p>Telefon: [Ihre Nummer]</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Folgen Sie mir</h3>
+                    <div class="social-links">
+                        <a href="https://instagram.com/parkettmedia" target="_blank">Instagram</a>
+                        <a href="https://tiktok.com/@Linorufaro" target="_blank">TikTok</a>
+                        <a href="https://youtube.com/@Linorufaro" target="_blank">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 LinoRufaro. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinoRufaro - Wählen Sie Ihre Kategorie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B6F47;
+            --secondary: #A0826D;
+            --accent: #C8B08C;
+            --light: #F5F1E8;
+            --dark: #3E2F23;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 3.5em;
+            color: var(--white);
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: var(--white);
+            opacity: 0.95;
+        }
+
+        .selection-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+        }
+
+        .option-card {
+            background-color: var(--white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 280px;
+            max-width: 350px;
+            flex: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .option-title {
+            font-size: 2em;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .option-description {
+            font-size: 1.1em;
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        .option-subtext {
+            font-size: 0.85em;
+            color: var(--primary);
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5em;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+
+            .selection-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .option-card {
+                min-width: 100%;
+                padding: 40px 30px;
+            }
+
+            .option-title {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo">ParkettMedia</div>
+        <div class="tagline" style="font-size: 0.9em; margin-bottom: 25px; opacity: 0.9; margin-top: -5px;">von LinoRufaro</div>
+        <div class="tagline" style="font-size: 1.2em; opacity: 0.95;">Social Media für das Handwerk</div>
+    </div>
+
+    <div class="selection-container">
+        <!-- Händler Option -->
+        <a href="haendler.html" class="option-card">
+            <div class="option-title">Händler</div>
+            <div class="option-description">
+                Spezialisierte Lösungen für Parketthandel und Großhändler
+            </div>
+        </a>
+
+        <!-- Parkettleger Option -->
+        <a href="parkettleger.html" class="option-card">
+            <div class="option-title">Parkettleger</div>
+            <div class="option-description">
+                Social Media Marketing für Parkettleger-Betriebe in Berlin
+            </div>
+        </a>
+
+        <!-- Kunde Option -->
+        <a href="kunde.html" class="option-card">
+            <div class="option-title">Kunde</div>
+            <div class="option-description">
+                Finden Sie qualifizierte Parkettleger in Ihrer Nähe
+            </div>
+            <div class="option-subtext">+ Premium Handwerkernetzwerk</div>
+        </a>
+    </div>
+
+    <footer>
+        <p>© 2026 ParkettMedia von LinoRufaro. Alle Rechte vorbehalten.</p>
+        <div style="margin-top: 15px;">
+            <a href="https://www.facebook.com/people/ParkettMedia/61586668531454/" target="_blank">Facebook</a>
+            <a href="https://instagram.com/parkettmedia" target="_blank">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

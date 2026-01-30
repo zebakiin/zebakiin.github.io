@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkettMedia - Für Händler</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B6F47;
+            --secondary: #A0826D;
+            --accent: #C8B08C;
+            --light: #F5F1E8;
+            --dark: #3E2F23;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .back-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: var(--light);
+        }
+
+        .cta-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .cta-header:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 111, 71, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            padding: 120px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.8em;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .problem h2 {
+            font-size: 2.8em;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .problem-card {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .problem-card h3 {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .problem-card p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .solution h2 {
+            font-size: 2.8em;
+            color: var(--primary);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .solution-content {
+            display: block;
+            margin-bottom: 60px;
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .solution-text {
+            width: 100%;
+        }
+
+        .solution-text h3 {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .solution-text p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .benefits h2 {
+            font-size: 2.8em;
+            color: var(--primary);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-number {
+            font-size: 3em;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+
+        .cta-section p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero h2 {
+                font-size: 1.3em;
+            }
+
+            .header-content {
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+            }
+
+            .solution-content {
+                flex-direction: column !important;
+            }
+
+            .solution-image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="back-link">← Zurück</a>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 250 80'%3E%3Ctext x='10' y='50' font-family='Arial' font-size='32' fill='%238B6F47' font-weight='bold'%3EParkettMedia%3C/text%3E%3C/svg%3E" alt="ParkettMedia Logo" class="logo">
+                <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-header">Jetzt Termin buchen</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Werden Sie zur ersten Wahl</h1>
+            <h2>Wir machen Ihren Parketthandel zur bevorzugten Adresse für Premium-Betriebe in Berlin</h2>
+            <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-button">Jetzt kostenloses Strategiegespräch buchen</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2>Die Herausforderung im Parketthandel</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>Unsichtbar in der Masse</h3>
+                    <p>Gute Qualität und faire Preise reichen nicht mehr. Wenn Parkettleger Sie nicht online finden, gehen sie zur Konkurrenz – egal wie gut Ihr Angebot ist.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Veraltete Werbemethoden</h3>
+                    <p>Klassische Werbung erreicht die neue Generation von Handwerkern nicht. Während Sie auf Printanzeigen setzen, gewinnt die Konkurrenz über Social Media.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Keine Differenzierung</h3>
+                    <p>Alle Händler bieten "gute Qualität" und "faire Preise". Was macht Sie besonders? Warum sollten Betriebe zu Ihnen kommen statt zum Wettbewerber?</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-button" style="padding: 15px 40px; font-size: 1em;">Strategiegespräch buchen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <h2>So stechen Sie die Konkurrenz aus</h2>
+            
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h3>1. Digitale Präsenz mit Mehrwert</h3>
+                    <p>Wir positionieren Sie nicht als gewöhnlichen Händler, sondern als Wissenspartner der Parkettbranche.</p>
+                    <p>Durch gezielte Content-Strategien auf Social Media werden Sie zur ersten Anlaufstelle für Parkettleger – bevor sie überhaupt nach Materialien suchen.</p>
+                </div>
+            </div>
+
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h3>2. Vertrauensaufbau durch Authentizität</h3>
+                    <p>Zeigen Sie, was Sie anders macht: Ihre Expertise, Ihre Lagerhaltung, Ihre Beratungsqualität, Ihre Lieferzeiten.</p>
+                    <p>Wir produzieren authentische Inhalte, die Parkettleger überzeugen, dass Sie der zuverlässigste Partner sind.</p>
+                </div>
+            </div>
+
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h3>3. Direkter Zugang zu Entscheidern</h3>
+                    <p>Statt auf Laufkundschaft zu warten, erreichen wir Betriebsinhaber und Einkäufer gezielt über Social Media.</p>
+                    <p>Ihre Botschaft landet direkt bei den Menschen, die über Lieferantenbeziehungen entscheiden.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-button" style="padding: 15px 40px; font-size: 1em;">Strategiegespräch buchen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Was Sie gewinnen</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">01</div>
+                    <h3>Top-of-Mind Position</h3>
+                    <p>Wenn Parkettleger Material brauchen, denken sie zuerst an Sie – nicht an die Konkurrenz.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">02</div>
+                    <h3>Mehr Stammkunden</h3>
+                    <p>Durch konstante Sichtbarkeit und Mehrwert werden aus Einmalkäufern langfristige Geschäftspartner.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">03</div>
+                    <h3>Premium-Positionierung</h3>
+                    <p>Sie werden nicht mehr über den Preis verglichen, sondern über Qualität, Service und Expertise wahrgenommen.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">04</div>
+                    <h3>Planbare Umsätze</h3>
+                    <p>Statt saisonalen Schwankungen schaffen Sie durch digitale Präsenz kontinuierliche Nachfrage.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">05</div>
+                    <h3>Wettbewerbsvorteil</h3>
+                    <p>Während Ihre Konkurrenz noch auf traditionelle Werbung setzt, dominieren Sie den digitalen Raum.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">06</div>
+                    <h3>Messbare Ergebnisse</h3>
+                    <p>Jede Kampagne wird analysiert. Sie sehen genau, welche Inhalte mehr Anfragen und Umsatz bringen.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-button" style="padding: 15px 40px; font-size: 1em;">Strategiegespräch buchen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Bereit, zur ersten Wahl zu werden?</h2>
+            <p>Lassen Sie uns in einem kostenlosen Strategiegespräch herausfinden, wie wir Ihren Parketthandel digital dominant machen.</p>
+            <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="cta-button">Jetzt Termin vereinbaren</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ParkettMedia</h3>
+                    <p>von LinoRufaro</p>
+                    <p>Berlin · Seit 2026</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p>E-Mail: contact@linorufaro.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Folgen Sie uns</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/ParkettMedia/61586668531454/" target="_blank">Facebook</a>
+                        <a href="https://instagram.com/parkettmedia" target="_blank">Instagram</a>
+                        <a href="https://tiktok.com/@Linorufaro" target="_blank">TikTok</a>
+                        <a href="https://youtube.com/@Linorufaro" target="_blank">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ParkettMedia von LinoRufaro. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

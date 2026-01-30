@@ -245,9 +245,39 @@
     <section class="cta-section">
         <div class="container">
             <h2>Interesse an Premium-Qualität?</h2>
-            <a href="mailto:contact@linorufaro.com" class="cta-button">Kontakt aufnehmen</a>
+            <a href="#" class="cta-button" onclick="openModal(); return false;">Kontakt aufnehmen</a>
         </div>
     </section>
+
+    <!-- Modal Popup -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p class="modal-title">Wir verifizieren erst, ob Sie geeignet für das Netzwerk sind</p>
+            <div class="modal-buttons">
+                <a href="mailto:contact@linorufaro.com" class="modal-button">E-Mail</a>
+                <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="modal-button calendly">Beratungsgespräch</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 
     <!-- Footer -->
     <footer>

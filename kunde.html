@@ -34,7 +34,6 @@
             padding: 0 20px;
         }
 
-        /* Header */
         header {
             background-color: var(--white);
             padding: 20px 0;
@@ -64,24 +63,11 @@
             background-color: var(--light);
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
             padding: 120px 0;
             text-align: center;
             color: var(--white);
-        }
-
-        .premium-badge {
-            display: inline-block;
-            background-color: var(--gold);
-            color: var(--dark);
-            padding: 10px 30px;
-            border-radius: 30px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            font-size: 0.9em;
         }
 
         .hero h1 {
@@ -96,7 +82,6 @@
             opacity: 0.95;
         }
 
-        /* Content Section */
         .content {
             padding: 80px 0;
             background-color: var(--white);
@@ -116,7 +101,6 @@
             margin: 0 auto 20px;
         }
 
-        /* CTA Section */
         .cta-section {
             padding: 80px 0;
             background-color: var(--light);
@@ -129,8 +113,12 @@
             margin-bottom: 40px;
         }
 
-        .cta-button {
+        .contact-options {
             display: inline-block;
+            position: relative;
+        }
+
+        .cta-button {
             background-color: var(--gold);
             color: var(--dark);
             padding: 18px 45px;
@@ -140,6 +128,9 @@
             font-size: 1.1em;
             transition: all 0.3s;
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
         }
 
         .cta-button:hover {
@@ -147,7 +138,78 @@
             box-shadow: 0 6px 30px rgba(212, 175, 55, 0.6);
         }
 
-        /* Footer */
+        .dropdown-box {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            min-width: 350px;
+            z-index: 1000;
+        }
+
+        .dropdown-box.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .dropdown-title {
+            font-size: 1em;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .dropdown-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dropdown-button {
+            display: block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .dropdown-button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .dropdown-button.calendly {
+            background-color: var(--gold);
+            color: var(--dark);
+        }
+
+        .dropdown-button.calendly:hover {
+            background-color: #c19d2f;
+        }
+
         footer {
             background-color: var(--dark);
             color: var(--white);
@@ -194,7 +256,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2em;
@@ -209,11 +270,15 @@
                 gap: 15px;
                 justify-content: center;
             }
+
+            .dropdown-box {
+                min-width: 90vw;
+                left: 50%;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -223,7 +288,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Meisterhafte Parkettverlegung</h1>
@@ -232,7 +296,6 @@
         </div>
     </section>
 
-    <!-- Content Section -->
     <section class="content">
         <div class="container">
             <h2>Höchste Qualität</h2>
@@ -241,45 +304,21 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <h2>Interesse an Premium-Qualität?</h2>
-            <a href="#" class="cta-button" onclick="openModal(); return false;">Kontakt aufnehmen</a>
+            <div class="contact-options">
+                <button class="cta-button" id="contactBtn">Kontakt aufnehmen</button>
+                <div class="dropdown-box" id="dropdownBox">
+                    <div class="dropdown-buttons">
+                        <a href="mailto:contact@linorufaro.com" class="dropdown-button">E-Mail</a>
+                        <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="dropdown-button calendly">Beratungsgespräch</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Modal Popup -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p class="modal-title">Wir verifizieren erst, ob Sie geeignet für das Netzwerk sind</p>
-            <div class="modal-buttons">
-                <a href="mailto:contact@linorufaro.com" class="modal-button">E-Mail</a>
-                <a href="https://calendly.com/contact-linorufaro/30min" target="_blank" class="modal-button calendly">Beratungsgespräch</a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function openModal() {
-            document.getElementById('contactModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('contactModal').style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('contactModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    </script>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -310,5 +349,21 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const btn = document.getElementById('contactBtn');
+        const dropdown = document.getElementById('dropdownBox');
+
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target) && e.target !== btn) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
